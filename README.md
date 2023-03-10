@@ -1,4 +1,4 @@
-![image](/pics/fluflo_logo.png)
+![image](/pics/covflo_logo.png)
 
 ## Introduction
 
