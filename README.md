@@ -3,12 +3,8 @@
 ## Introduction
 
 Nextflow pipeline for generation of phylogenetic trees to be visualized with Auspice. 
-FLUFLO is written by JMC and adapted from a snakefile by Kimia Kamelian which generates 
-phylogenies with the Augur bioinformatic toolkit (MAFFT, IQ-TREE, TimeTree..) that can be visualized in Auspice from [Nextstrain](https://docs.nextstrain.org/projects/auspice/en/stable/index.html)
-
-The original intent of the pipeline was for Influenza A sequences, with the flexibility
-afforded by Nextflow to be applied to other pathogens, used with various workload managers (SGE vs. SLURM),
-and easily adjusted.
+COVFLO is written by JMC and adapted from snakefile, R, Python scripts written by Kimia Kamelian which generates 
+phylogenies using tools like FastTree, Augur bioinformatic toolkit (MAFFT, IQ-TREE, TimeTree..), Goalign, cov2clusters, and TreeCluster that can be visualized in Auspice from [Nextstrain](https://docs.nextstrain.org/projects/auspice/en/stable/index.html). This pipeline consolidates the environments and scripts previously used for routine phylogentic analysis of SARS-CoV-2 sequences at the BCCDC into a portable, version-controlled command line tool.
 
 ## Table of Contents
 
@@ -19,22 +15,17 @@ and easily adjusted.
 - [Input](#input)
 - [Output](#output)
 - [Workflow](#workflow)
-- [Troubleshooting](#troubleshooting)
 - [References](#references)
 
 ## Quick-Start Guide
 
-Change into project directory:
+Run covflo pipeline:
 ```
-cd /home/user/flu/fluflo/
-```
-Run FLUFLO pipeline:
-```
-nextflow run main.nf -profile conda --work_dir /home/user/flu/input_data/
+nextflow run j3551ca/covflo -profile conda --conda_cache /path/to/caches --dir /home/user/sarscov2/input_data -r main
 ```
 For details on available arguments, enter:
 ```
-nextflow run main.nf --help
+nextflow run j3551ca/covflo -r main --help
 ```
 
 ## Dependencies
@@ -65,13 +56,13 @@ accesible to compute nodes by adding ```--conda_cache /path/to/new/location/```.
 
 To copy the program into a directory of your choice, from desired directory run:
 ```
-git clone https://github.com/j3551ca/fluflo.git
-cd fluflo
-nextflow run main.nf -profile conda --work_dir /home/user/flu/input_data/
+git clone https://github.com/j3551ca/covflo.git
+cd covflo
+nextflow run main.nf -profile conda --dir /home/user/sarscov2/input_data/
 ```
-or run directly using:
+or run directly from Github using:
 ```
-nextflow run j3551ca/fluflo -profile conda --work_dir /home/user/flu/input_data/
+nextflow run j3551ca/fluflo -profile conda --dir /home/user/sarscov2/input_data
 ```
 
 ## Input
@@ -108,34 +99,17 @@ thus, designed not to be captured in Nextflow channels and copied to the results
 directory.
 
 auspice:
-- flu_na.json
+- ncov_na.json
 
 reports:
-- fluflo_usage.html
-- fluflo_timeline.html
-- fluflo_dag.html
+- covflo_usage.html
+- covflo_timeline.html
+- covflo_dag.html
 
 
 ## Workflow
 
-![image](/pics/fluflo_workflow.png)
-
-## Troubleshooting
-
-Error: 
-
-
-Solution: 
-```
-conda activate Nextstrain
-pip install nextstrain-augur==13.0.0
-```
-Error:
-augur refine is using TreeTime version 0.8.6
-
-Solution:
-
-
+![image](/pics/covflo_workflow.png)
 
 ## References
 
@@ -151,3 +125,16 @@ multiple sequence alignment based on fast Fourier transform. Nucleic Acids Resea
 Effective Stochastic Algorithm for Estimating Maximum-Likelihood Phylogenies. Molecular Biology and Evolution, 32(1), 268–274. https://doi.org/10.1093/molbev/msu300
 
 5. Sagulenko, P., Puller, V., & Neher, R. A. (2018). TreeTime: Maximum-likelihood phylodynamic analysis. Virus Evolution, 4(1). https://doi.org/10.1093/ve/vex042
+
+6. Lemoine, F., Gascuel, O. (2021). Gotree/Goalign: toolkit and Go API to facilitate the development of phylogenetic workflows,
+NAR Genomics and Bioinformatics, 3(3), lqab075, https://doi.org/10.1093/nargab/lqab075
+
+7. Steenwyk J.L., Buida III T.J., Li Y., Shen X-X., Rokas A. (2020) Clipkit: A multiple sequence alignment trimming software for accurate phylogenomic inference. PLOS Biology Available at: https://journals.plos.org/plosbiology/article?id=10.1371%2Fjournal.pbio.3001007. 
+
+8. Price, M.N., Dehal, P.S., Arkin, A.P. (2009). FastTree: Computing Large Minimum Evolution Trees with Profiles instead of a Distance Matrix, Molecular Biology and Evolution, 26(7), 1641–1650, https://doi.org/10.1093/molbev/msp077
+
+9. Kozlov, A.M., Darriba, D., Flouri, T., Morel, B., Stamatakis, A. (2019). RAxML-NG: a fast, scalable and user-friendly tool for maximum likelihood phylogenetic inference, Bioinformatics, 35(21), 4453–4455, https://doi.org/10.1093/bioinformatics/btz305
+
+10. Sobkowiak, B., Kamelian, K., Zlosnik, J. E. A., Tyson, J., Silva, A. G. D., Hoang, L. M. N., Prystajecky, N., & Colijn, C. (2022). Cov2clusters: genomic clustering of SARS-CoV-2 sequences. BMC genomics, 23(1), 710. https://doi.org/10.1186/s12864-022-08936-4
+
+11. Balaban, M., Moshiri, N., Mai, U., Jia, X., Mirarab, S. (2019). "TreeCluster: Clustering biological sequences using phylogenetic trees." PLoS ONE. 14(8):e0221068. doi:10.1371/journal.pone.0221068
