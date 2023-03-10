@@ -31,4 +31,4 @@ dependencies:
   - zlib=1.2.13=h5eee18b_0
   - pip:
     - pip==22.2.2
-prefix: /home/jess.cal/.conda/envs/treecluster
+
