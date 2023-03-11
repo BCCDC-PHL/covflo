@@ -27,10 +27,6 @@ For details on available arguments, enter:
 ```
 nextflow run j3551ca/covflo -r main --help
 ```
-Or if cloned into a local directory:
-```
-nextflow run main.nf --help
-```
 
 ## Dependencies
 
@@ -93,36 +89,36 @@ command line.
 The output directories are 'results', 'auspice', and 'reports'.
 
 results:
-- weights
-- tree_collapse_snp.nwk
-- tree.nwk
-- tc_cluster.tsv
-- resolvedtree.nwk
-- repopulate.nwk
-- replaced.fasta
-- removedpercent.fasta
-- order.nwk
-- nt_muts.json
-- names.dedup
-- informative.fasta (no log)
 - filtered.fasta
-- fasttree.nwk
+- removedpercent.fasta
+- replaced.fasta
+- informative.fasta (no log)
+- names.dedup
 - deduped.fasta
 - compressed.fasta
-- collapse_length.nwk
-- brlen_round.nwk
-- branch_lengths.json
+- weights
+- fasttree.nwk
+- resolvedtree.nwk
 - blscaled.raxml{\*.startTree, \*.rba, \*.log, \*.bestTreeCollapsed, \*.bestTree, \*.bestModel}
+- brlen_round.nwk
+- collapse_length.nwk
+- repopulate.nwk
+- order.nwk
+- tree.nwk
+- branch_lengths.json
+- nt_muts.json
 - aa_muts.json
 - SARS-CoV-2_{0.8,0.9}\_TransProbs.txt (pairwise transmission probabilities used as input for next tree build)
 - SARS-CoV-2_{0.8,0.9}\_GenomicClusters.txt (genomic clusters used as input for next tree build)
 - SARS-CoV-2_{0.8,0.9}\_ClustersSummary.csv
+- tree_collapse_snp.nwk
+- tc_cluster.tsv
 
 
-*NOTE: the above files are listed in order of appearance in the pipeline. T
+*NOTE: the above files are listed in order of appearance in the 'main.nf' script, where process used to generate them as well as short description of process can be found in 'tag' directive.
 
 auspice:
-- ncov_na.json
+- ncov_na.json (final tree)
 
 reports:
 - covflo_usage.html
