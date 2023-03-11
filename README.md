@@ -27,6 +27,10 @@ For details on available arguments, enter:
 ```
 nextflow run j3551ca/covflo -r main --help
 ```
+Or if cloned into a local directory:
+```
+nextflow run main.nf --help
+```
 
 ## Dependencies
 
