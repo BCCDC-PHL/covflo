@@ -13,7 +13,7 @@ def helpMe() {
   log.info """
 
 Overview:
-Nextflow pipeline for generation of phylogenetic tree of influenza.
+Nextflow pipeline for generation of phylogenetic tree of SARS-CoV-2.
 Replaces snakefile.
 
 Usage:
@@ -26,12 +26,27 @@ Optional arguments:
  --seqs                         Multi-fasta file containing consensus sequences of interest [./data/sequences.fasta]
  --ref                          Reference genome used to align reads to during guided assembly [./config/Ref.gb]
  --meta                         File containing metadata for sequences under analysis [./data/metadata.csv]
+ --conda_cache                  File system path where Conda env is to be stored [./covflo-main/work/]
  --drop_strains                 Excluded strains/ samples [./config/dropped_strains.txt]
+ --keep_strains                 Strains that are included [./config/included_strains.txt]
  --colors                       Colors used in final auspice visualization [./config/colors.csv]
  --lat_long                     Sample latitudes and longitudes [./config/lat_longs.csv]
  --auspice                      Specifications for visualization in auspice (ex. title) [./config/auspice_config.json]
+ --n_cutoff                     Maximum allowable percentage of N in a seq [0.15]
+ --clip_option                  Clipkit algorithm to use [kpic-smart-gap]
+ --bl_min                       Minimum branch length for RAxML [0.0000000001]
+ --precision                    Precision of rounding for branch length [6]
+ --length                       Length of branches to be collapsed using Gotree [0]
+ --coalescent                   Timetree coalescent timescale model [const]
+ --date_inference               Timetree node date estimates [marginal]
  --divergence_units             Units used to measure divergence in phylogeny refining step [mutations]
- --conda_cache                  File system path where Conda env is to be stored [fluflo-main/work/]
+ --clock_rate                   Timetree clock rate [0.0008]
+ --clock_std_dev                Timetree standard deviation of clock rate [0.0004]
+ --inference                    Type of inference used in reconstructing ancestral seqs and mutations (Augur) [joint]
+ --trans_probs_80               Input pairwise transmission probabilities (cov2clusters) min threshold 0.8 [./config/SARS-CoV-2_0.8_TransProbs.txt]
+ --trans_probs_90               Input pairwise transmission probabilities (cov2clusters) min threshold 0.9 [./config/SARS-CoV-2_0.9_TransProbs.txt]
+ --gen_clusts_80                Genomic clusters from previous build based on min trans prob 0.8 [./config/SARS-CoV-2_0.8_GenomicClusters.txt]
+ --gen_clusts_90                Genomic clusters from previous build based on min trans prob 0.9 [./config/SARS-CoV-2_0.9_GenomicClusters.txt]
  --version                      Current covflo version number
  --help                         This usage statement
         """
