@@ -123,4 +123,4 @@ dependencies:
   - xz=5.2.10=h5eee18b_1
   - zlib=1.2.12=h5eee18b_3
   - zstd=1.5.2=ha4553b6_0
-prefix: /home/jess.cal/.conda/envs/r421
+
