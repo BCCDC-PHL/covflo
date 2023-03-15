@@ -3,7 +3,7 @@
 ## Introduction
 
 Nextflow pipeline for generation of phylogenetic trees to be visualized with Auspice. 
-COVFLO is written by JMC and adapted from snakefile, R, Python scripts written by Kimia Kamelian which generates 
+COVFLO ("co-flo") is written by JMC and adapted from snakefile, R, Python scripts written by Kimia Kamelian which generates 
 phylogenies using tools like FastTree, Augur bioinformatic toolkit (MAFFT, IQ-TREE, TimeTree..), Goalign, cov2clusters, and TreeCluster that can be visualized in Auspice from [Nextstrain](https://docs.nextstrain.org/projects/auspice/en/stable/index.html). This pipeline consolidates the environments and scripts previously used for routine phylogentic analysis of SARS-CoV-2 sequences at the BCCDC into a portable, version-controlled command line tool.
 
 ## Table of Contents
