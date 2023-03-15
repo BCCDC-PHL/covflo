@@ -45,7 +45,7 @@ Nextflow requires Java v8.0+, so check that it is installed:
 ```
 java -version
 ```
-The OS-independent conda environment activated upon running fluflo is specified in the
+The OS-independent conda environment activated upon running covflo is specified in the
 ```environment.yml``` file of the project directory and is built when 
 ```-profile conda``` is included in the command line. Nextflow will save
 the environment to the project directory by default. Alternatively, the 
@@ -62,7 +62,7 @@ nextflow run main.nf -profile conda --dir /home/user/sarscov2/input_data/
 ```
 or run directly from Github using:
 ```
-nextflow run j3551ca/fluflo -profile conda --dir /home/user/sarscov2/input_data
+nextflow run j3551ca/covflo -profile conda --dir /home/user/sarscov2/input_data
 ```
 
 ## Input
