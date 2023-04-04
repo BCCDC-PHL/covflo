@@ -1,4 +1,4 @@
-name: /home/jess.cal/caches/nextstrain-bca8b6fc6ead669c898143d0db097600
+name: cov_nextstrain
 channels:
   - bioconda
   - defaults
