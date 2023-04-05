@@ -493,13 +493,13 @@ file("SARS-CoV-2_0.9_ClustersSummary.csv"), file("SARS-CoV-2_0.9_TransProbs.txt"
 
 script:
 """
-A3_0.8_subsam_cov2clusters_081021_141021.R "${refine_tree}" \
+Rscript ${projectDir}/bin/A3_0.8_subsam_cov2clusters_081021_141021.R "${refine_tree}" \
 "${refine_bls}" \
 "${order_tree}" \
 "${params.trans_probs_80}" \
 "${params.gen_clusts_80}"
 
-A3_0.9_subsam_cov2clusters_081021_141021.R "${refine_tree}" \
+Rscript ${projectDir}/bin/A3_0.9_subsam_cov2clusters_081021_141021.R "${refine_tree}" \
 "${refine_bls}" \
 "${order_tree}" \
 "${params.trans_probs_90}" \
