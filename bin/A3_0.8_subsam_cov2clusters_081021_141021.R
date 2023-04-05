@@ -1,4 +1,4 @@
-#!/usr/bin/env -S Rscript 
+#!/usr/bin/env R 
 #Importation from Nextflow JMC 2023
 args = commandArgs(trailingOnly=TRUE)
 input_tree <- args[1] #just placeholder in funct definition, but default if ordered not specified
