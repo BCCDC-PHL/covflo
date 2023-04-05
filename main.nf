@@ -496,14 +496,14 @@ script:
 A3_0.8_subsam_cov2clusters_081021_141021.R "${refine_tree}" \
 "${refine_bls}" \
 "${order_tree}" \
-"${params.trans_probs_80}" \
-"${params.gen_clusts_80}"
+${params.trans_probs_80} \
+${params.gen_clusts_80}
 
 A3_0.9_subsam_cov2clusters_081021_141021.R "${refine_tree}" \
 "${refine_bls}" \
 "${order_tree}" \
-"${params.trans_probs_90}" \
-"${params.gen_clusts_90}"
+${params.trans_probs_90} \
+${params.gen_clusts_90}
 """
 }
 
