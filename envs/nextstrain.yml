@@ -7,7 +7,7 @@ dependencies:
   - _openmp_mutex=4.5=2_gnu
   - attrs=22.2.0=pyh71513ae_0
   - augur=13.0.0=pyhdfd78af_0
-  - auspice=2.29.1=h87f3376_1
+  - auspice=2.29.1=h1b792b2_0
   - bcbio-gff=0.6.9=pyh7cba7a3_1
   - biopython=1.76=py38h516909a_0
   - boto3=1.26.105=pyhd8ed1ab_0
