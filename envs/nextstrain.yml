@@ -1,4 +1,4 @@
-name: nextstrain_cov
+name: nextstrain
 channels:
   - bioconda
   - conda-forge
@@ -28,7 +28,7 @@ dependencies:
   - cvxopt=1.3.0=py38h2fdd11e_4
   - cycler=0.11.0=pyhd8ed1ab_0
   - dsdp=5.8=hd9d9efa_1203
-  - fasttree=2.1.10=h779adbc_6
+  - fasttree=2.1.10=h779adbc_5
   - fftw=3.3.10=nompi_hf0379b8_106
   - fonttools=4.39.3=py38h1de0b5d_0
   - freetype=2.12.1=hca18f0e_1
@@ -91,7 +91,7 @@ dependencies:
   - olefile=0.46=pyh9f0ad1d_1
   - openjpeg=2.4.0=hb52868f_1
   - openmpi=4.1.5=h414af15_101
-  - openssl=3.1.0=h0b41bf4_0
+  - openssl=3.1.0=hd590300_2
   - packaging=23.0=pyhd8ed1ab_0
   - pandas=1.5.3=py38hdc8b05c_1
   - pbzip2=1.1.13=0
