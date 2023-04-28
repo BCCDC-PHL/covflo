@@ -54,7 +54,7 @@ Optional arguments:
 
 def version() {
   log.info """
-  fluflo version: ${workflow.manifest.version}
+  covflo version: ${workflow.manifest.version}
   """
 }
 
@@ -568,7 +568,8 @@ workflow.onComplete {
         Duration    : ${workflow.duration}
         Success     : ${workflow.success}
         Launch dir  : ${workflow.workDir}
-        Data dir    : ${params.projectDir}
+        Data dir    : ${workflow.params.projectDir}
+        Covflo vers : ${workflow.manifest.version} 
         Exit status : ${workflow.exitStatus}
         """
         .stripIndent()
