@@ -562,13 +562,14 @@ workflow.onComplete {
         SARS-CoV-2 Tree Generated on Almeida
         Script A2 ready to be run.
         
-        Pipeline execution summary
+        Pipeline Execution Summary
         ---------------------------
         Completed at: ${workflow.complete}
         Duration    : ${workflow.duration}
         Success     : ${workflow.success}
-        workDir     : ${workflow.workDir}
-        exit status : ${workflow.exitStatus}
+        Launch dir  : ${workflow.workDir}
+        Data dir    : ${params.projectDir}
+        Exit status : ${workflow.exitStatus}
         """
         .stripIndent()
 
