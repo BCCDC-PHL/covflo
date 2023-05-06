@@ -351,7 +351,7 @@ file("repopulate.nwk")
 """
 gotree repopulate \
 -t ${task.cpus} \
--g {dedup_names} \
+-g ${dedup_names} \
 -i ${collapse_tree} \
 -o "repopulate.nwk"
 """
