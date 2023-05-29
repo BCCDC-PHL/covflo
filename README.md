@@ -4,7 +4,7 @@
 
 Nextflow pipeline for generation of phylogenetic trees to be visualized with Auspice. 
 COVFLO ("co-flo") is written by JMC and adapted from snakefile, R, Python scripts written by Kimia Kamelian which generates 
-phylogenies using tools like FastTree, Augur bioinformatic toolkit (MAFFT, IQ-TREE, TimeTree..), Goalign, cov2clusters, and TreeCluster that can be visualized in Auspice from [Nextstrain](https://docs.nextstrain.org/projects/auspice/en/stable/index.html). This pipeline consolidates the environments and scripts previously used for routine phylogentic analysis of SARS-CoV-2 sequences at the BCCDC into a portable, version-controlled command line tool.
+phylogenies using tools like FastTree, Augur bioinformatic toolkit, Goalign, cov2clusters, and TreeCluster that can be visualized in Auspice from [Nextstrain](https://docs.nextstrain.org/projects/auspice/en/stable/index.html). This pipeline consolidates the environments and scripts previously used for routine phylogentic analysis of SARS-CoV-2 sequences at the BCCDC into a portable, version-controlled command line tool.
 
 ## Table of Contents
 
@@ -136,24 +136,17 @@ reports:
 
 2. Huddleston J, Hadfield J, Sibley TR, Lee J, Fay K, Ilcisin M, Harkins E, Bedford T, Neher RA, Hodcroft EB, (2021). Augur: a bioinformatics toolkit for phylogenetic analyses of human pathogens. Journal of Open Source Software, 6(57), 2906, https://doi.org/10.21105/joss.02906
 
-3. Katoh, K., Misawa, K., Kuma, K., & Miyata, T. (2002). MAFFT: a novel method for rapid
-multiple sequence alignment based on fast Fourier transform. Nucleic Acids Research,
-30(14), 3059–3066. https://doi.org/10.1093/nar/gkf436
+3. Sagulenko, P., Puller, V., & Neher, R. A. (2018). TreeTime: Maximum-likelihood phylodynamic analysis. Virus Evolution, 4(1). https://doi.org/10.1093/ve/vex042
 
-4. Nguyen, L.-T., Schmidt, H. A., Haeseler, A. von, & Minh, B. Q. (2014). IQ-TREE: A Fast and
-Effective Stochastic Algorithm for Estimating Maximum-Likelihood Phylogenies. Molecular Biology and Evolution, 32(1), 268–274. https://doi.org/10.1093/molbev/msu300
-
-5. Sagulenko, P., Puller, V., & Neher, R. A. (2018). TreeTime: Maximum-likelihood phylodynamic analysis. Virus Evolution, 4(1). https://doi.org/10.1093/ve/vex042
-
-6. Lemoine, F., Gascuel, O. (2021). Gotree/Goalign: toolkit and Go API to facilitate the development of phylogenetic workflows,
+4. Lemoine, F., Gascuel, O. (2021). Gotree/Goalign: toolkit and Go API to facilitate the development of phylogenetic workflows,
 NAR Genomics and Bioinformatics, 3(3), lqab075, https://doi.org/10.1093/nargab/lqab075
 
-7. Steenwyk J.L., Buida III T.J., Li Y., Shen X-X., Rokas A. (2020) Clipkit: A multiple sequence alignment trimming software for accurate phylogenomic inference. PLOS Biology Available at: https://journals.plos.org/plosbiology/article?id=10.1371%2Fjournal.pbio.3001007. 
+5. Steenwyk J.L., Buida III T.J., Li Y., Shen X-X., Rokas A. (2020) Clipkit: A multiple sequence alignment trimming software for accurate phylogenomic inference. PLOS Biology Available at: https://journals.plos.org/plosbiology/article?id=10.1371%2Fjournal.pbio.3001007. 
 
-8. Price, M.N., Dehal, P.S., Arkin, A.P. (2009). FastTree: Computing Large Minimum Evolution Trees with Profiles instead of a Distance Matrix, Molecular Biology and Evolution, 26(7), 1641–1650, https://doi.org/10.1093/molbev/msp077
+6. Price, M.N., Dehal, P.S., Arkin, A.P. (2009). FastTree: Computing Large Minimum Evolution Trees with Profiles instead of a Distance Matrix, Molecular Biology and Evolution, 26(7), 1641–1650, https://doi.org/10.1093/molbev/msp077
 
-9. Kozlov, A.M., Darriba, D., Flouri, T., Morel, B., Stamatakis, A. (2019). RAxML-NG: a fast, scalable and user-friendly tool for maximum likelihood phylogenetic inference, Bioinformatics, 35(21), 4453–4455, https://doi.org/10.1093/bioinformatics/btz305
+7. Kozlov, A.M., Darriba, D., Flouri, T., Morel, B., Stamatakis, A. (2019). RAxML-NG: a fast, scalable and user-friendly tool for maximum likelihood phylogenetic inference, Bioinformatics, 35(21), 4453–4455, https://doi.org/10.1093/bioinformatics/btz305
 
-10. Sobkowiak, B., Kamelian, K., Zlosnik, J. E. A., Tyson, J., Silva, A. G. D., Hoang, L. M. N., Prystajecky, N., & Colijn, C. (2022). Cov2clusters: genomic clustering of SARS-CoV-2 sequences. BMC genomics, 23(1), 710. https://doi.org/10.1186/s12864-022-08936-4
+8. Sobkowiak, B., Kamelian, K., Zlosnik, J. E. A., Tyson, J., Silva, A. G. D., Hoang, L. M. N., Prystajecky, N., & Colijn, C. (2022). Cov2clusters: genomic clustering of SARS-CoV-2 sequences. BMC genomics, 23(1), 710. https://doi.org/10.1186/s12864-022-08936-4
 
-11. Balaban, M., Moshiri, N., Mai, U., Jia, X., Mirarab, S. (2019). "TreeCluster: Clustering biological sequences using phylogenetic trees." PLoS ONE. 14(8):e0221068. doi:10.1371/journal.pone.0221068
+9. Balaban, M., Moshiri, N., Mai, U., Jia, X., Mirarab, S. (2019). "TreeCluster: Clustering biological sequences using phylogenetic trees." PLoS ONE. 14(8):e0221068. doi:10.1371/journal.pone.0221068
