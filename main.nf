@@ -279,7 +279,7 @@ input:
 tuple file(resolve_tree), file(compress_seqs), file(compress_weights) //from compress process output
 
 output:
-tuple file("blscaled.raxml.bestTree"), file("*.log"), file("*.bestTreeCollapsed"),
+tuple file("blscaled.raxml.bestTree"), file("*.log"), 
 file("*.bestModel"), file("*.startTree"), file("*.rba")
 
 """
@@ -302,7 +302,7 @@ tag "Modify branch lengths; precisions = 6 using Gotree"
 publishDir "${params.work_dir}/results/", mode: 'copy'
 
 input:
-tuple file(branches_tree), file(branches_log), file(branches_collapsed), file(branches_model),
+tuple file(branches_tree), file(branches_log), file(branches_model),
 file(branches_start), file(branches_rba)
 
 output:
