@@ -568,13 +568,13 @@ workflow.onComplete {
         Duration    : ${workflow.duration}
         Success     : ${workflow.success}
         Launch dir  : ${workflow.workDir}
-        Data dir    : ${workflow.params.projectDir}
+        Data dir    : ${workflow.projectDir}
         Covflo vers : ${workflow.manifest.version} 
         Exit status : ${workflow.exitStatus}
         """
         .stripIndent()
 
-    sendMail(to: 'jessica.caleta@bccdc.ca', subject: 'Test email', body: msg)
+    sendMail(to: 'jessica.caleta@bccdc.ca', subject: 'Nextstrain Tree SARS-CoV-2', body: msg)
 }
 
 /**
