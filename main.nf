@@ -563,16 +563,31 @@ workflow.onComplete {
         Script A2 ready to be run.
         
         Pipeline Execution Summary
-        ---------------------------
-        Completed at: ${workflow.complete}
-        Duration    : ${workflow.duration}
-        Success     : ${workflow.success}
-        Launch dir  : ${workflow.workDir}
-        Data dir    : ${workflow.projectDir}
-        Covflo vers : ${workflow.manifest.version} 
-        Exit status : ${workflow.exitStatus}
+        --------------------------------
+        Completed at:   ${workflow.complete}
+        Duration:   ${workflow.duration}
+        Success:    ${workflow.success}
+        Working directory:   ${workflow.workDir}
+        Command line:   ${workflow.commandLine}
+        Data directory:   ${params.work_dir}
+        Covflo version:   ${workflow.manifest.version} 
+        Nextflow version:   ${nextflow.version}
+        Exit status:    ${workflow.exitStatus}
         """
         .stripIndent()
+
+        log.info """
+        Pipeline version: ${workflow.manifest.version}  
+        Nextflow version: ${nextflow.version}  
+        Execution start time: ${workflow.start}
+        User: ${workflow.userName}
+        Executed command: ${workflow.commandLine} 
+        Project directory: ${workflow.projectDir}
+        Launch directory: ${workflow.launchDir} 
+        Working directory: ${workflow.workDir} 
+        Session ID: ${workflow.sessionId}
+        """.stripIndent()
+        log.info msg
 
     sendMail(to: 'jessica.caleta@bccdc.ca', subject: 'Nextstrain Tree SARS-CoV-2', body: msg)
 }
