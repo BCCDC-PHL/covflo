@@ -576,17 +576,6 @@ workflow.onComplete {
         """
         .stripIndent()
 
-        log.info """
-        Pipeline version: ${workflow.manifest.version}  
-        Nextflow version: ${nextflow.version}  
-        Execution start time: ${workflow.start}
-        User: ${workflow.userName}
-        Executed command: ${workflow.commandLine} 
-        Project directory: ${workflow.projectDir}
-        Launch directory: ${workflow.launchDir} 
-        Working directory: ${workflow.workDir} 
-        Session ID: ${workflow.sessionId}
-        """.stripIndent()
         log.info msg
 
     sendMail(to: 'jessica.caleta@bccdc.ca', subject: 'Nextstrain Tree SARS-CoV-2', body: msg)
