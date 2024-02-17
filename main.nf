@@ -509,9 +509,10 @@ input:
 tuple file(refine_tree), file(refine_bls), file(order_tree)
 
 output:
-tuple file("SARS-CoV-2_0.8_GenomicClusters.txt"), file("SARS-CoV-2_0.8_ClustersSummary.csv"),\
-file("SARS-CoV-2_0.8_TransProbs.txt"), file("SARS-CoV-2_0.9_GenomicClusters.txt"), \
-file("SARS-CoV-2_0.9_ClustersSummary.csv"), file("SARS-CoV-2_0.9_TransProbs.txt")
+tuple path("SARS-CoV-2_0.8_GenomicClusters.txt"), path("SARS-CoV-2_0.8_ClustersSummary.csv"),\
+path("SARS-CoV-2_0.8_TransProbs.txt"), path("SARS-CoV-2_0.9_GenomicClusters.txt"), \
+path("SARS-CoV-2_0.9_ClustersSummary.csv"), path("SARS-CoV-2_0.9_TransProbs.txt"), emit: analysis
+path("*provenance.yml"), emit: prov
 
 script:
 """
