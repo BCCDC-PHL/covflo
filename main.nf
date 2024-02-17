@@ -156,7 +156,7 @@ input:
 file(filt_seqs)
 
 output:
-file("removedpercent.fasta")
+path("removedpercent.fasta")
 
 """
 goalign \
