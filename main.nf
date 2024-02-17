@@ -84,9 +84,29 @@ return """
                                                            {{}
                                                      , -=-~{ .-^- _
 =========================================================================
-data directory: ${params.work_dir}
-output data: ${params.work_dir}results/
-output tree: ${params.work_dir}auspice/
+Data directory: ${params.work_dir}
+Output data: ${params.work_dir}results/
+Output tree: ${params.work_dir}auspice/
+"""
+}
+
+def header_extended() {
+
+  return"""
+- pipeline_name: BCCDC-PHL/covflo
+    pipeline_version: ${workflow.manifest.version}  
+- nextflow_version: ${nextflow.version}  
+- timestamp_analysis_start: ${workflow.start}
+- session_id: ${workflow.sessionId}
+- user: ${workflow.userName}
+- command_executed: ${workflow.commandLine} 
+- launch_directory: ${workflow.launchDir} 
+- project_directory: ${workflow.projectDir}
+- working_directory: ${workflow.workDir} 
+- git_repository: ${workflow.repository}
+- git_commit: ${workflow.commitId}
+- git_branch: ${workflow.revision}
+
 """
 }
 
