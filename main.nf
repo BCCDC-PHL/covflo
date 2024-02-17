@@ -289,6 +289,7 @@ gotree resolve \
 -i ${fasttree_tree} \
 -o "resolvedtree.nwk"
 """
+//gotree version command returns empty
 }
 
 process branches {
