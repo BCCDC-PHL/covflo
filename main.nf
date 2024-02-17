@@ -586,8 +586,7 @@ tag "Collecting provenance"
 publishDir "${params.work_dir}/logs/", pattern: "*_provenance.yml", mode: 'copy'
 
 input:
-//tuple path(input_hashes_prov), path(gen_clust_prov), path(tree_clust_prov)
-tuple path(input_hashes_prov), path(tree_clust_prov)
+tuple path(input_hashes_prov), path(gen_clust_prov), path(tree_clust_prov)
 
 output:
 path("*covflo_provenance.yml"), emit: prov
