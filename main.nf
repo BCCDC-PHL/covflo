@@ -118,6 +118,7 @@ program introduction
 
 // this prints program header with mandatory input and output locations
 log.info header()
+log.info header_extended()
 
 /**
 ---------------------------------------------------------------------------------
