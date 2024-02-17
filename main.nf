@@ -487,17 +487,17 @@ process export {
   output:
   file("ncov_na.json")
 
-      """
-      augur export v2 \
-          --tree ${refine_tree} \
-          --metadata ${meta} \
-          --node-data ${refine_bls} ${ancestral_muts} ${translate_muts} \
-          --colors ${params.colors} \
-          --lat-longs ${params.lat_long} \
-          --minify-json \
-          --auspice-config ${params.auspice} \
-          --output ncov_na.json
-      """
+"""
+augur export v2 \
+--tree ${refine_tree} \
+--metadata ${meta} \
+--node-data ${refine_bls} ${ancestral_muts} ${translate_muts} \
+--colors ${params.colors} \
+--lat-longs ${params.lat_long} \
+--minify-json \
+--auspice-config ${params.auspice} \
+--output ncov_na.json
+"""
 }
 
 process clusters {
