@@ -504,6 +504,10 @@ Rscript ${projectDir}/bin/A3_0.9_subsam_cov2clusters_081021_141021.R "${refine_t
 "${order_tree}" \
 "${params.trans_probs_90}" \
 "${params.gen_clusts_90}"
+
+printf -- "- process_name: clusters\\n" > genomic_cluster_provenance.yml
+printf -- "    tool_name: cov2clusters\\n    tool_version: 081021_141021\\n" >> genomic_cluster_provenance.yml
+printf -- "    tool_name: R\\n    tool_version: \$(R --version 2>&1 | fgrep "version " | cut -f3 -d' ')\\n" >> genomic_cluster_provenance.yml
 """
 }
 
@@ -524,6 +528,63 @@ collapse-minimum-branch-length-scale-to-snps.py ${order_tree} > tree_collapse_sn
 
 TreeCluster.py -i tree_collapse_snp.nwk -o tc_cluster.tsv -t 6 -m max_clade
 
+printf -- "- process_name: condense\\n" > treecluster_provenance.yml
+printf -- "    tool_name: TreeCluster.py\\n    tool_version: \$(TreeCluster.py --version 2>&1 | cut -d' ' -f3)\\n" >> treecluster_provenance.yml
+printf -- "    tool_name: Python\\n    tool_version: \$(python --version 2>&1 | cut -d' ' -f2)" >> treecluster_provenance.yml
+
+"""
+}
+
+process checksums {
+
+tag "Generating hashes of input data"
+
+input:
+path(input_files)
+
+output:
+path("*provenance.yml"), emit: prov
+
+"""
+sha256sum ${input_files} >> input_hash.tsv
+
+while read -r hash path;
+do
+  abs_path=\$(realpath \${path})
+  printf -- "- input_filename: \$(basename \${abs_path})\\n    input_path: \${abs_path}\\n    sha256: \${hash}\\n" >> input_hash_provenance.yml
+done < "input_hash.tsv"
+"""
+
+}
+
+process provenance {
+
+tag "Collecting provenance"
+publishDir "${params.work_dir}/logs/", pattern: "*_provenance.yml", mode: 'copy'
+
+input:
+//tuple path(input_hashes_prov), path(gen_clust_prov), path(tree_clust_prov)
+tuple path(input_hashes_prov), path(tree_clust_prov)
+
+output:
+path("*covflo_provenance.yml"), emit: prov
+
+"""
+current_time=\$(date +%Y%m%d-%H%M%S)
+
+printf -- "- process_name: filtration,refine,ancestral,translate,export\\n" >> \${current_time}_provenance.yml
+printf -- "    tool_name: augur\\n    tool_version: \$(augur version 2>&1 | cut -d' ' -f2)\\n" >> \${current_time}_provenance.yml
+printf -- "- process_name: percent,replace,dedup,compress\\n" >> \${current_time}_provenance.yml
+printf -- "    tool_name: goalign\\n    tool_version: \$(goalign version 2>&1)\\n" >> \${current_time}_provenance.yml
+printf -- "- process_name: clip\\n" >> \${current_time}_provenance.yml
+printf -- "    tool_name: clipkit\\n    tool_version: \$(clipkit --version 2>&1 | cut -f2 -d' ')\\n" >> \${current_time}_provenance.yml
+printf -- "- process_name: fasttree\\n" >> \${current_time}_provenance.yml
+printf -- "    tool_name: fasttree\\n    tool_version: \$(fasttree version 2>&1 | fgrep "Version" | cut -f3 -d' ')\\n" >> \${current_time}_provenance.yml
+printf -- "- process_name: branches\\n" >> \${current_time}_provenance.yml
+printf -- "    tool_name: RAxML-NG\\n    tool_version: \$(raxml-ng --version 2>&1 | fgrep "RAxML-NG" | cut -f3 -d' ')\\n" >> \${current_time}_provenance.yml
+
+cat ${input_hashes_prov} \${current_time}_provenance.yml ${gen_clust_prov} ${tree_clust_prov} >> \${current_time}_covflo_provenance.yml 
+echo -e '${header_extended()}' >> \${current_time}_covflo_provenance.yml
 """
 }
 
@@ -537,6 +598,7 @@ workflow {
   seq_ch = Channel.fromPath(params.seqs, checkIfExists:true)
   ref_ch = Channel.fromPath(params.ref, checkIfExists:true)
   meta_ch = Channel.fromPath(params.meta, checkIfExists:true)
+  inputs_ch = seq_ch.combine(meta_ch.combine(ref_ch))
 
   filtration(seq_ch.combine(meta_ch)) | percent | replace | clip | dedup | compress | fasttree | resolve
   branches(resolve.out.combine(compress.out)) | round | collapse 
@@ -547,6 +609,11 @@ workflow {
   export(meta_ch.combine(refine.out.combine(ancestral.out.combine(translate.out))))
   clusters(refine.out.combine(order.out))
   condense(order.out)
+  checksums(inputs_ch)
+  provenance(checksums.out.prov
+  .combine(clusters.out.prov
+  .combine(condense.out.prov)))
+ 
 }
 
 /**
