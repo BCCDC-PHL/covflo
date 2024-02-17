@@ -543,8 +543,8 @@ input:
 file(order_tree)
 
 output:
-tuple file("tree_collapse_snp.nwk"), file("tc_cluster.tsv")
-
+tuple path("tree_collapse_snp.nwk"), path("tc_cluster.tsv"), emit: analysis
+path("*provenance.yml"), emit: prov
 
 """
 collapse-minimum-branch-length-scale-to-snps.py ${order_tree} > tree_collapse_snp.nwk 
