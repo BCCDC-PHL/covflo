@@ -667,7 +667,7 @@ workflow.onComplete {
 
         log.info msg
 
-    sendMail(to: 'jessica.caleta@bccdc.ca', subject: 'Nextstrain Tree SARS-CoV-2', body: msg)
+    sendMail(to: ${params.email}, subject: 'Nextstrain Tree SARS-CoV-2', body: msg)
 }
 
 /**
