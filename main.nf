@@ -667,7 +667,9 @@ workflow.onComplete {
 
         log.info msg
 
+    if (params.email) {
     sendMail(to: ${params.email}, subject: 'Nextstrain Tree SARS-CoV-2', body: msg)
+}
 }
 
 /**
